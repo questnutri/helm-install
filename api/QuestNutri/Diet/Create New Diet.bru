@@ -1,0 +1,35 @@
+meta {
+  name: Create New Diet
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{GATEWAY_URL}}/diet
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "patientId": "{{patientId}}"
+  }
+}
+
+vars:pre-request {
+  patientId: {{PATIENT_ID}}
+}
+
+script:post-response {
+  if(res.status === 201 && res("id")) {
+    bru.setVar("createdDiet" ,res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+}

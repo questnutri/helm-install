@@ -1,0 +1,49 @@
+meta {
+  name: Search Aliments
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: http://{{GATEWAY_URL}}/aliment/graphql
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  query {
+  aliments(
+    source: null, 
+    page: null, 
+    items: null,
+    query: {
+      name: null
+    }
+  ) {
+        currentPage
+        length
+        isFirstPage
+        isLastPage
+        totalPages
+        totalItems
+        data {
+  				_id
+          source
+          name
+        }
+    }
+  }
+}
+
+vars:post-response {
+  availableAliments: res("data.aliments.data")
+}
+
+script:post-response {
+  const aliments = res("data.aliments.data")
+  
+}
+
+settings {
+  encodeUrl: true
+}

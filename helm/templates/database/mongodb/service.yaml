@@ -1,0 +1,17 @@
+{{- range .Values.microservices }}
+{{- if and .database (eq .database.type "mongodb") }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}-mongodb-service
+spec:
+  selector:
+    app: {{ .name }}-mongodb-deployment
+  type: ClusterIP
+  ports:
+    - port: {{ default 27017 .database.port }}
+      protocol: TCP
+      targetPort: 27017
+---
+{{- end }}
+{{- end }}

@@ -1,0 +1,58 @@
+microservices:
+  - name:  auth
+    image: questnutri/auth-svc:latest
+    volumeMaps:
+      - name: auth-keys-config-map
+        keys:
+          - private-key.pem
+          - public-key.pem
+    database: 
+      type: postgres
+      volumeMaps:
+        - name: auth-postgres-config-map
+          keys:
+            - init.sql
+          # port: 5432
+  - name: aliment
+    image: questnutri/aliment-svc:latest
+    database: 
+      type: mongodb
+      volumeMaps:
+        - name: new-taco-config-map
+          keys:
+            - new-taco.json
+        - name: home-measures-config-map
+          keys:
+            - home-measures.json
+        - name: import-databases-config-map
+          keys:
+            - import-databases.sh
+  - name: diet
+    image: questnutri/diet-svc:latest
+    database:
+      type: postgres
+      # port: 5435
+  - name: nutritionist
+    image: questnutri/nutritionist-svc:latest
+    database:
+      type: postgres
+      # port: 5433
+  - name: patient
+    image: questnutri/patient-svc:latest
+    database:
+      type: postgres
+      # port: 5434
+  - name: record
+    image: questnutri/record-svc:latest
+    database:
+      type: postgres
+      # port: 5437
+  - name: admin
+    image: questnutri/admin-svc:latest
+  - name: gateway
+    image: questnutri/gateway:latest
+    port: 8080
+    servicePort: 8080
+    serviceType: LoadBalancer
+
+rabbitmq: {}
