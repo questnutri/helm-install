@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: questnutri-frontend-service
+  name: questnutri-admin-panel-service
 spec:
   selector:
-    app: questnutri-frontend-deployment
+    app: questnutri-admin-panel-deployment
   type: LoadBalancer
   ports:
-    - port: 80
+    - port: 14041
       targetPort: 80
       protocol: TCP
       name: http

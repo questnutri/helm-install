@@ -5,4 +5,10 @@ openssl genrsa -out ./helm/files/microservices/auth/keys/jwt_private.pem 2048 &&
 PRIVATE_KEY=$(cat ./helm/files/microservices/auth/keys/jwt_private.pem)
 PUBLIC_KEY=$(cat ./helm/files/microservices/auth/keys/jwt_public.pem)
 
-echo "Private and public keys generated and added to helm."
+sed -i '/^AUTH_PRIVATE_KEY=/,/^$/d' .env
+sed -i '/^AUTH_PUBLIC_KEY=/,/^$/d' .env
+
+echo "AUTH_PRIVATE_KEY=\"$PRIVATE_KEY\"" >> .env
+echo "AUTH_PUBLIC_KEY=\"$PUBLIC_KEY\"" >> .env
+
+echo "Private and public keys generated and added to .env file."
