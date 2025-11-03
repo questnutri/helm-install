@@ -1,6 +1,6 @@
 microservices:
   - name:  auth
-    image: questnutri/auth-svc:2.0.0
+    image: questnutri/auth-svc:2.0.1
     volumeMaps:
       - name: auth-keys-config-map
         keys:
@@ -57,7 +57,7 @@ microservices:
             - init.sql
       # port: 5437
   - name: gateway
-    image: questnutri/gateway:2.0.1
+    image: questnutri/gateway:2.0.2
     port: 8181
     servicePort: 8080
     serviceType: LoadBalancer
