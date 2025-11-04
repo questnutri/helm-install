@@ -33,7 +33,7 @@ microservices:
       type: postgres
       # port: 5435
   - name: nutritionist
-    image: questnutri/nutritionist-svc:2.0.0
+    image: questnutri/nutritionist-svc:2.0.1
     database:
       type: postgres
       # port: 5433
