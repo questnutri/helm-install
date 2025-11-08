@@ -28,7 +28,7 @@ microservices:
           keys:
             - import-databases.sh
   - name: diet
-    image: questnutri/diet-svc:2.0.0
+    image: questnutri/diet-svc:2.0.1
     database:
       type: postgres
       # port: 5435
