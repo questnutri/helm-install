@@ -1,0 +1,42 @@
+meta {
+  name: [N] Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "patientId": "{{PATIENT_ID}}",
+    "startDate": "2025-04-01",
+    "endDate": "2025-12-15"
+  }
+}
+
+vars:pre-request {
+  patientId: {{PATIENT_ID}}
+}
+
+script:post-response {
+  if(res.status === 201 && res("id")) {
+    bru.setVar("createdDiet" ,res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,15 +1,16 @@
 meta {
   name: Create new admin
   type: http
-  seq: 3
+  seq: 1
 }
 
 post {
-  url: http://{{GATEWAY_URL}}/admin/create
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/create
   body: none
   auth: inherit
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

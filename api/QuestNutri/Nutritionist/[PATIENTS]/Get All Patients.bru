@@ -1,0 +1,22 @@
+meta {
+  name: Get All Patients
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/patients
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  if(res.status !== 200) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

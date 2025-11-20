@@ -1,0 +1,20 @@
+meta {
+  name: Get by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/{{createdDiet}}/meal/:mealId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  mealId: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

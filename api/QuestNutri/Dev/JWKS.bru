@@ -1,0 +1,16 @@
+meta {
+  name: JWKS
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/auth/jwks.json
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

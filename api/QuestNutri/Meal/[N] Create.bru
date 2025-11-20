@@ -1,0 +1,38 @@
+meta {
+  name: [N] Create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/meals
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "dietId": "{{createdDiet}}",
+    "name": "Breakfast",
+    "hour": "09:00",
+    "repeatConfiguration": {
+      "type": "WEEKLY",
+      "targetDate": "2025-11-01"
+    }
+  }
+}
+
+script:post-response {
+  if(res.status === 201 && res("id")) {
+    bru.setVar("createdMeal" ,res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

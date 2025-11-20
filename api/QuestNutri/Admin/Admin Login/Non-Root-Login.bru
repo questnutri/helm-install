@@ -1,0 +1,32 @@
+meta {
+  name: Non-Root-Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "{{ADMIN_NON_ROOT_EMAIL}}",
+    "password": "{{ADMIN_NON_ROOT_PASSWORD}}"
+  }
+}
+
+vars:pre-request {
+  email: {{ADMIN_EMAIL}}
+  password: 
+}
+
+vars:post-response {
+  ADMIN_ACCESS_TOKEN: res("accessToken")
+  ADMIN_REFRESH_TOKEN: res("refreshToken")
+}
+
+settings {
+  encodeUrl: true
+}
