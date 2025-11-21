@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: admin-panel
-          image: "questnutri/admin-panel:1.2.0"
+          image: "questnutri/admin-panel:1.2.1"
           imagePullPolicy: Always
           ports:
             - containerPort: 80
