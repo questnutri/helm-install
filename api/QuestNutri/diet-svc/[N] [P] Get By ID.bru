@@ -1,0 +1,28 @@
+meta {
+  name: [N] [P] Get By ID
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:createdDiet
+  body: none
+  auth: bearer
+}
+
+params:path {
+  createdDiet: {{dietId}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+vars:pre-request {
+  dietId: {{createdDiet}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: [A] Get by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/patient/:patientId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  patientId: 
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

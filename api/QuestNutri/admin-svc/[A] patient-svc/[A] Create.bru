@@ -1,21 +1,26 @@
 meta {
-  name: [N] Register
+  name: [A] Create
   type: http
   seq: 1
 }
 
 post {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/register
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/nutritionist/:nutritionistId/patients
   body: json
   auth: bearer
 }
 
+params:path {
+  nutritionistId: {{NUTRITIONIST_ID}}
+}
+
 auth:bearer {
-  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+  token: {{ADMIN_ACCESS_TOKEN}}
 }
 
 body:json {
   {
+    "nutritionistId": "{{NUTRITIONIST_ID}}",
     "name": "{{$randomFirstName}}",
     "email": "test{{account_number}}@patient.com",
     "documentNumber": "00{{account_number}}"

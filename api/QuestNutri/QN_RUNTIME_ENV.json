@@ -1,0 +1,31 @@
+{
+  "name": "QN_RUNTIME_ENV",
+  "variables": [
+    {
+      "name": "NUTRITIONIST_ACCOUNT_NUMBER",
+      "value": "1",
+      "type": "number",
+      "enabled": true,
+      "secret": false
+    },
+    {
+      "name": "PATIENT_ACCOUNT_NUMBER",
+      "value": "1",
+      "type": "number",
+      "enabled": true,
+      "secret": false
+    },
+    {
+      "name": "ADMIN_ACCOUNT_NUMBER",
+      "value": "1",
+      "type": "number",
+      "enabled": true,
+      "secret": false
+    }
+  ],
+  "info": {
+    "type": "bruno-environment",
+    "exportedAt": "2025-11-20T16:40:33.292Z",
+    "exportedUsing": "Bruno/v2.14.0"
+  }
+}

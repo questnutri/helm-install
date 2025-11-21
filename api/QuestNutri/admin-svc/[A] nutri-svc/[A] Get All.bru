@@ -1,0 +1,24 @@
+meta {
+  name: [A] Get All
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/nutritionist/all?approved=false
+  body: none
+  auth: bearer
+}
+
+params:query {
+  approved: false
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

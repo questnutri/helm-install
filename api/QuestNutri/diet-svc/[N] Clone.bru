@@ -1,0 +1,36 @@
+meta {
+  name: [N] Clone
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId/clone?targetPatientId=a63974c1-d91c-455e-a020-bbb3b585e6f8
+  body: json
+  auth: bearer
+}
+
+params:query {
+  targetPatientId: a63974c1-d91c-455e-a020-bbb3b585e6f8
+  ~includeMeals: true
+  ~includeFoods: true
+}
+
+params:path {
+  dietId: {{createdDiet}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "description": "Testing clone!"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: [A] Get by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/nutritionist/:nutritionistId/patients
+  body: none
+  auth: inherit
+}
+
+params:path {
+  nutritionistId: {{NUTRITIONIST_ID}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

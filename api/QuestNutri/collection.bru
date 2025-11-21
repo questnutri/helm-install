@@ -87,7 +87,7 @@ script:pre-request {
   
   bru.setFunction("randomRepeatConfiguration", function (startDate) {
       // Provide various repeat configuration shapes
-      const types = ['ONCE', 'DAILY', 'WEEKLY', 'WEEKDAYS', 'MONTHLY', 'MONTHLY_DATE'];
+      const types = ['ONCE', 'DAILY', 'WEEKLY','MONTHLY', 'TEST_ERROR1', 'TEST_ERROR2', 'TEST_ERROR3'];
       const type = this.pickRandom(types);
   
       const baseStart = startDate ? new Date(startDate) : new Date();

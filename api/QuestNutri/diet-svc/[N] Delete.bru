@@ -1,0 +1,20 @@
+meta {
+  name: [N] Delete
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  dietId: {{createdDiet}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
