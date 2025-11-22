@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/me
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/me?includeNutritionists=true&includeDiets=true
   body: none
   auth: bearer
+}
+
+params:query {
+  includeNutritionists: true
+  includeDiets: true
 }
 
 auth:bearer {

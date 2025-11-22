@@ -1,0 +1,30 @@
+meta {
+  name: [N] Update
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "firstName": "{{$randomFirstName}}",
+    "lastName": "{{$randomLastName}}",
+    "phone": "{{random_phone}}",
+    "crn": "{{random_crn}}",
+    "mainAddress": "{{LAST_CREATED_ADDRESS_ID}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

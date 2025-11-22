@@ -1,0 +1,32 @@
+meta {
+  name: [N] [P] Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/weight
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "valueInKg": "70.0",
+    "patientId": "{{PATIENT_ID}}"
+  }
+}
+
+vars:pre-request {
+  TOKEN: {{PATIENT_ACCESS_TOKEN}}
+  ~TOKEN: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

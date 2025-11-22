@@ -56,6 +56,10 @@ script:pre-request {
       return `${n()}${n()}${n()}.${n()}${n()}${n()}.${n()}${n()}${n()}-${n()}${n()}`;
   })
   
+  bru.setFunction("randomHeight", function() {
+    return Math.floor(Math.random() * (200 - 140 + 1)) + 140;
+  })
+  
   bru.setFunction("randomMealName", function () {
       const names = [
           'Breakfast', 'Morning Snack', 'Brunch', 'Lunch', 'Afternoon Snack',
@@ -244,6 +248,10 @@ script:post-response {
       return `${n()}${n()}${n()}.${n()}${n()}${n()}.${n()}${n()}${n()}-${n()}${n()}`;
   })
   
+  bru.setFunction("randomHeight", function() {
+    return Math.floor(Math.random() * (200 - 140 + 1)) + 140;
+  })
+  
   bru.setFunction("randomMealName", function () {
       const names = [
           'Breakfast', 'Morning Snack', 'Brunch', 'Lunch', 'Afternoon Snack',
@@ -275,7 +283,7 @@ script:post-response {
   
   bru.setFunction("randomRepeatConfiguration", function (startDate) {
       // Provide various repeat configuration shapes
-      const types = ['ONCE', 'DAILY', 'WEEKLY', 'WEEKDAYS', 'MONTHLY', 'MONTHLY_DATE'];
+      const types = ['ONCE', 'DAILY', 'WEEKLY','MONTHLY', 'TEST_ERROR1', 'TEST_ERROR2', 'TEST_ERROR3'];
       const type = this.pickRandom(types);
   
       const baseStart = startDate ? new Date(startDate) : new Date();
@@ -387,5 +395,4 @@ script:post-response {
   bru.setFunction("syncLogin", function(loginResponse) {
     console.log(loginResponse);
   })
-  
 }

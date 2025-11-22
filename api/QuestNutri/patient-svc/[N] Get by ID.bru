@@ -1,18 +1,21 @@
 meta {
-  name: [N] Me
+  name: [N] Get by ID
   type: http
-  seq: 3
+  seq: 6
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/me?includeAddresses=true&includePatients=true
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/:patientId
   body: none
   auth: bearer
 }
 
 params:query {
-  includeAddresses: true
-  includePatients: true
+  ~includeDiets: true
+}
+
+params:path {
+  patientId: {{PATIENT_ID}}
 }
 
 auth:bearer {

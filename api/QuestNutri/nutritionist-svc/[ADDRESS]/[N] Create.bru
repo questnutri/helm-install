@@ -1,0 +1,44 @@
+meta {
+  name: [N] Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/address
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "name": "Home",
+    "street": "Rua das Flores",
+    "number": "123",
+    "complement": "Apt 45",
+    "neighborhood": "Centro",
+    "city": "São Paulo",
+    "state": "SP",
+    "zipCode": "01001-000",
+    "country": "Brazil"
+  }
+}
+
+script:post-response {
+  if(res.status === 201) {
+    bru.setVar("LAST_CREATED_ADDRESS_ID" , res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

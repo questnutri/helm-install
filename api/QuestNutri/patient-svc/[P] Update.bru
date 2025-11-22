@@ -1,0 +1,28 @@
+meta {
+  name: [P] Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{PATIENT_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "firstName": "{{$randomFirstName}}",
+    "lastName": "{{$randomLastName}}",
+    "phone": "{{random_phone}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

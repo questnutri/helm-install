@@ -1,0 +1,31 @@
+meta {
+  name: [N] Update by ID
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/:patientId
+  body: json
+  auth: bearer
+}
+
+params:path {
+  patientId: {{PATIENT_ID}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "heightInCm": "170",
+    "dateOfBirth": "1998-08-28"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

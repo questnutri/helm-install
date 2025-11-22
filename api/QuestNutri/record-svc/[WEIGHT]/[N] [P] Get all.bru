@@ -1,0 +1,24 @@
+meta {
+  name: [N] [P] Get all
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/weight/patient/:patientId/all?limit=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  limit: 1
+}
+
+params:path {
+  patientId: {{PATIENT_ID}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

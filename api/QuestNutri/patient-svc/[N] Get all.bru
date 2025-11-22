@@ -1,0 +1,27 @@
+meta {
+  name: [N] Get all
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/all?page=1&limit=10&includeDiets=true
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  limit: 10
+  includeDiets: true
+  ~includeMeals: true
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

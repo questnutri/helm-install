@@ -1,0 +1,30 @@
+meta {
+  name: [N] Update by ID
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/address/:addressId
+  body: json
+  auth: bearer
+}
+
+params:path {
+  addressId: {{LAST_CREATED_ADDRESS_ID}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "name": "Test"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

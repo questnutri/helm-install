@@ -1,0 +1,20 @@
+meta {
+  name: [N] Make main
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/address/:addressId/main
+  body: none
+  auth: inherit
+}
+
+params:path {
+  addressId: {{LAST_CREATED_ADDRESS_ID}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

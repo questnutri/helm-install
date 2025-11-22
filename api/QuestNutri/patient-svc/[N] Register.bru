@@ -16,14 +16,22 @@ auth:bearer {
 
 body:json {
   {
-    "name": "{{$randomFirstName}}",
+    "firstName": "{{$randomFirstName}}",
+    "lastName": "{{$randomLastName}}",
     "email": "test{{account_number}}@patient.com",
-    "documentNumber": "00{{account_number}}"
+    "documentNumber": "00{{account_number}}",
+    "gender": "MALE",
+    "levelOfActivity": "1",
+    "dateOfBirth": "{{$randomDatePast}}",
+    "heightInCm": "{{random_height}}",
+    "phone": "{{random_phone}}"
   }
 }
 
 script:pre-request {
   bru.setVar("account_number", bru.getEnvVar("PATIENT_ACCOUNT_NUMBER"));
+  
+  bru.setVar("random_height", bru.function("randomHeight", []));
 }
 
 script:post-response {

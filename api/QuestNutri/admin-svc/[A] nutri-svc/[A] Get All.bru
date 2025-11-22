@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/nutritionist/all?approved=false
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/admin/nutritionist/all?select=id
   body: none
   auth: bearer
 }
 
 params:query {
-  approved: false
+  select: id
 }
 
 auth:bearer {
