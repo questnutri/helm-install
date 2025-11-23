@@ -46,7 +46,7 @@ microservices:
     database:
       type: postgres
   - name: admin
-    image: questnutri/admin-svc:2.3.0
+    image: questnutri/admin-svc:2.3.1
     database: 
       type: postgres
       volumeMaps:
