@@ -5,13 +5,14 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/:patientId
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/:patientId?includeDiets=true&includeWeights=true
   body: none
   auth: bearer
 }
 
 params:query {
-  ~includeDiets: true
+  includeDiets: true
+  includeWeights: true
 }
 
 params:path {

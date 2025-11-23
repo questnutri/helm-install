@@ -1,17 +1,17 @@
 meta {
   name: [N] Update by ID
   type: http
-  seq: 5
+  seq: 4
 }
 
 patch {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/address/:addressId
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/foods/:foodId
   body: json
   auth: bearer
 }
 
 params:path {
-  addressId: {{LAST_CREATED_ADDRESS_ID}}
+  foodId: {{createdFood}}
 }
 
 auth:bearer {
@@ -20,7 +20,7 @@ auth:bearer {
 
 body:json {
   {
-    "name": "Test123"
+    
   }
 }
 

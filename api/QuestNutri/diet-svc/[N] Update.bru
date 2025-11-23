@@ -1,0 +1,35 @@
+meta {
+  name: [N] Update
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId
+  body: json
+  auth: bearer
+}
+
+params:path {
+  dietId: {{createdDiet}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "status": "DEFINITION",
+    "name": "Test update",
+    "description": "Testing",
+    "startDate": "2025-12-01",
+    "timeZone": -3,
+    "endDate": null
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

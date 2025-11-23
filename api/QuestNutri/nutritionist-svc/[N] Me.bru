@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/me?includeAddresses=true&includePatients=true
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/nutritionist/me
   body: none
   auth: bearer
 }
 
 params:query {
-  includeAddresses: true
-  includePatients: true
+  ~includeAddresses: true
+  ~includePatients: true
 }
 
 auth:bearer {
