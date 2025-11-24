@@ -29,8 +29,9 @@ script:pre-request {
 }
 
 script:post-response {
-  if(res.status === 201 && res("id")) {
-    bru.setVar("createdDiet" ,res("id"));
+  if(res.status === 201 && res("result")) {
+    const result = res("result");
+    bru.setVar("createdDiet", result.id);
   }
   
   if(res.status !== 201) {

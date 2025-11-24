@@ -1,17 +1,17 @@
 meta {
-  name: [N] [P] Get By ID
+  name: [N] [P] Get by ID
   type: http
   seq: 5
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:createdDiet
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId
   body: none
   auth: bearer
 }
 
 params:path {
-  createdDiet: {{dietId}}
+  dietId: {{createdDiet}}
 }
 
 auth:bearer {
