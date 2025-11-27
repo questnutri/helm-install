@@ -1,0 +1,25 @@
+meta {
+  name: [A] Create listener
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/listener
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "origin": "CONTROLLER",
+    "controller": "AuthRestController",
+    "method": "POST",
+    "path": "/login"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
