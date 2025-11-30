@@ -1,0 +1,58 @@
+meta {
+  name: [A] Create trigger
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/triggers
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+      "trackId": "{{track_id}}",
+      "listenerId": "{{listener_id}}",
+      "bindedTrigger": "",
+      "conditions": [
+          {
+              "foundAt": "statusCode",
+              "propertyType": "number",
+              "conditionOperation": "EQUAL",
+              "value": "200"
+          },
+          {
+              "foundAt": "user",
+              "mappedBy": "role",
+              "propertyType": "string",
+              "conditionOperation": "EQUAL",
+              "value": "patient"
+          },
+          {
+              "foundAt": "timestamp",
+              "propertyType": "date",
+              "conditionOperation": "GREATER_THAN",
+              "applyOperationOnDate": "day",
+              "compare": {
+                  "foundAt": "trackRecord",
+                  "mappedBy": "lastUpdatedAt"
+              }
+          }
+      ]
+  }
+}
+
+vars:pre-request {
+  track_id: {{TRACK_ID}}
+  listener_id: {{LISTENER_ID}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

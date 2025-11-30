@@ -1,0 +1,26 @@
+meta {
+  name: [A] [N] [P] Ack all
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/notification/ack
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+vars:pre-request {
+  ~TOKEN: {{PATIENT_ACCESS_TOKEN}}
+  ~TOKEN: {{ADMIN_ACCESS_TOKEN}}
+  ~TOKEN: {{NUTRITIONIST_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

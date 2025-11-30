@@ -1,0 +1,24 @@
+meta {
+  name: Get by id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/achievements/:achievementId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  achievementId: {{ACHIEVEMENT_ID}}
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

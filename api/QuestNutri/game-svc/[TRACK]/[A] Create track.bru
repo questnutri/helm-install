@@ -1,0 +1,39 @@
+meta {
+  name: [A] Create track
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/tracks
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+body:json {
+  // {
+  //   "name": "Patient's meal records"
+  // }
+  {
+    "name": "Patient's login count"
+  }
+}
+
+script:post-response {
+  if(res.status === 201) {
+    bru.setVar("TRACK_ID" , res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

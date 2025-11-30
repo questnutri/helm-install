@@ -5,15 +5,15 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId/plan?monthlyView=true&date=2025-11-01&includeRecords=true
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId/plan?includeRecords=true
   body: json
   auth: bearer
 }
 
 params:query {
-  monthlyView: true
-  date: 2025-11-01
   includeRecords: true
+  ~monthlyView: true
+  ~date: 2025-11-01
   ~length: 24
 }
 

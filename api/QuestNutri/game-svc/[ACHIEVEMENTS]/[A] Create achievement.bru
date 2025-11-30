@@ -1,0 +1,74 @@
+meta {
+  name: [A] Create achievement
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/achievements
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "i18n": {
+      "pt-BR": {
+        "name": "Primeiro Login",
+        "description": "Primeiro login do usuário",
+        "unlockNotification": {
+          "title": "Seja bem vindo(a)!",
+          "message": "Primeiro login na plataforma!"
+        }
+      },
+      "en-US": {
+        "name": "First Login",
+        "description": "First user login",
+        "unlockNotification": {
+          "title": "Welcome!",
+          "message": "Your very first login at our app!"
+        }
+      }
+    },
+    "targetValue": "1",
+    "trackId": "{{track_id}}"
+  }
+  // {
+  //   "name": "Login week streak",
+  //   "targetValue": "7",
+  //   "trackId": "{{track_id}}"
+  // }
+  // {
+  //   "name": "First meal record",
+  //   "targetValue": "1",
+  //   "trackId": "{{track_id}}"
+  // }
+  // {
+  //   "name": "8 meal records",
+  //   "targetValue": "8",
+  //   "trackId": "{{track_id}}"
+  // }
+}
+
+vars:pre-request {
+  track_id: {{TRACK_ID}}
+}
+
+script:post-response {
+  if(res.status === 201) {
+    bru.setVar("ACHIEVEMENT_ID" , res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

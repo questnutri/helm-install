@@ -1,0 +1,24 @@
+meta {
+  name: [A] Delete by ID
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/listeners/:listenerId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  listenerId: {{LISTENER_ID}}
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

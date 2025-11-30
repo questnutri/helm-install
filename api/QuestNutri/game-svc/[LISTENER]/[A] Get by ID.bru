@@ -1,0 +1,28 @@
+meta {
+  name: [A] Get by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/listeners/:listenerId
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~includeTriggers: true
+}
+
+params:path {
+  listenerId: {{LISTENER_ID}}
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
