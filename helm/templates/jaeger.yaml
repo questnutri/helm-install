@@ -39,6 +39,7 @@ spec:
   type: LoadBalancer
   selector:
     app: jaeger-deployment
+  loadBalancerIP: 192.168.0.210
   ports:
     - name: ui
       port: 16686
