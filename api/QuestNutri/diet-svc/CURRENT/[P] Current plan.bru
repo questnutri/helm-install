@@ -1,28 +1,24 @@
 meta {
-  name: [N] [P] Plan
+  name: [P] Current plan
   type: http
-  seq: 7
+  seq: 2
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/:dietId/plan?includeRecords=true
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/current/plan?includeRecords=true&monthlyView=true
   body: json
   auth: bearer
 }
 
 params:query {
   includeRecords: true
-  ~monthlyView: true
+  monthlyView: true
   ~date: 2025-11-01
   ~length: 24
 }
 
-params:path {
-  dietId: {{createdDiet}}
-}
-
 auth:bearer {
-  token: {{NUTRITIONIST_ACCESS_TOKEN}}
+  token: {{PATIENT_ACCESS_TOKEN}}
 }
 
 body:json {

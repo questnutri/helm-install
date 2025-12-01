@@ -5,12 +5,13 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/patients/:patientId
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/patients/:patientId?includeCompliance=true
   body: none
   auth: bearer
 }
 
 params:query {
+  includeCompliance: true
   ~nutritionistId: {{NUTRITIONIST_ID}}
 }
 
