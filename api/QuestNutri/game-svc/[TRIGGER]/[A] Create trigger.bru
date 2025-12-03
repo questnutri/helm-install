@@ -20,19 +20,6 @@ body:json {
       "listenerId": "{{listener_id}}",
       "conditions": [
           {
-              "foundAt": "statusCode",
-              "propertyType": "number",
-              "conditionOperation": "EQUAL",
-              "value": "200"
-          },
-          {
-              "foundAt": "user",
-              "mappedBy": "role",
-              "propertyType": "string",
-              "conditionOperation": "EQUAL",
-              "value": "patient"
-          },
-          {
               "foundAt": "timestamp",
               "propertyType": "date",
               "conditionOperation": "GREATER_THAN",
@@ -41,7 +28,17 @@ body:json {
                   "foundAt": "trackRecord",
                   "mappedBy": "lastUpdatedAt"
               }
+          },
+        {
+          "foundAt": "data",
+          "mappedBy": "totalTodayWaterIntake.totalIntake",
+          "propertyType": "number",
+          "conditionOperation": "GREATER_OR_EQUAL",
+          "compare": {
+            "foundAt": "data",
+            "mappedBy": "currentDailyWaterGoal"
           }
+        }
       ]
   }
 }
@@ -49,6 +46,16 @@ body:json {
 vars:pre-request {
   track_id: {{TRACK_ID}}
   listener_id: {{LISTENER_ID}}
+}
+
+script:post-response {
+  if(res.status === 201) {
+    bru.setVar("TRIGGER_ID" , res("id"));
+  }
+  
+  if(res.status !== 201) {
+      bru.setNextRequest(null);
+  }
 }
 
 settings {

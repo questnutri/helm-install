@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/water/:waterGoalId
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/water
   body: json
   auth: bearer
-}
-
-params:path {
-  waterGoalId: {{WATER_GOAL_ID}}
 }
 
 auth:bearer {
@@ -20,7 +16,8 @@ auth:bearer {
 
 body:json {
   {
-    "amountInMl": 200
+    "amountInMl": "200",
+    "operation": "ADD"
   }
 }
 

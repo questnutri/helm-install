@@ -5,13 +5,21 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/water/:waterGoalId
-  body: none
-  auth: inherit
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/water/patient/:patientId/all
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~includeRegisters: false
 }
 
 params:path {
-  waterGoalId: {{WATER_GOAL_ID}}
+  patientId: {{PATIENT_ID}}
+}
+
+auth:bearer {
+  token: {{PATIENT_ACCESS_TOKEN}}
 }
 
 settings {

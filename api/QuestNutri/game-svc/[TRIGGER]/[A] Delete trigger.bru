@@ -1,0 +1,32 @@
+meta {
+  name: [A] Delete trigger
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/game/triggers
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ADMIN_ACCESS_TOKEN}}
+}
+
+body:json {
+  {
+    "trackId": "{{track_id}}",
+    "listenerId": "{{listener_id}}"
+  }
+}
+
+vars:pre-request {
+  track_id: {{TRACK_ID}}
+  listener_id: {{LISTENER_ID}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

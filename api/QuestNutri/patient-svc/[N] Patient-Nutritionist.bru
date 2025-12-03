@@ -1,0 +1,26 @@
+meta {
+  name: [N] Patient/Nutritionist
+  type: http
+  seq: 9
+}
+
+patch {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/patient/:patientId/nutritionist
+  body: json
+  auth: inherit
+}
+
+params:path {
+  patientId: {{PATIENT_ID}}
+}
+
+body:json {
+  {
+    "dailyWaterGoalInMl": "2000"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
