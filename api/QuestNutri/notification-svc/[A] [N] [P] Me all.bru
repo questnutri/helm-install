@@ -1,17 +1,17 @@
 meta {
-  name: [A] [N] [P] Ack all
+  name: [A] [N] [P] Me all
   type: http
-  seq: 4
+  seq: 2
 }
 
-post {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/notification/ack/all
-  body: json
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/notification/me/all
+  body: none
   auth: bearer
 }
 
 auth:bearer {
-  token: {{PATIENT_ACCESS_TOKEN}}
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
 }
 
 vars:pre-request {
