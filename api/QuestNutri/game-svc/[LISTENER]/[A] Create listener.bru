@@ -16,17 +16,11 @@ auth:bearer {
 
 body:json {
   {
-    "origin": "CONTROLLER",
-    "controller": "AuthRestController",
-    "method": "POST",
-    "handler": "login"
-  }
-  // {
-  //   "origin": "CONTROLLER",
-  //   "controller": "MealRecordRestController",
-  //   "method": "POST",
-  //   "handler": "trackMealRecord"
-  // }
+          "origin": "CONTROLLER",
+          "controller": "AuthRestController",
+          "method": "POST",
+          "handler": "login"
+      }
 }
 
 script:post-response {

@@ -15,15 +15,12 @@ auth:bearer {
 }
 
 body:json {
-  // {
-  //   "name": "Patient's login count"
-  // }
-  {
-    "name": "Patient's water goal streak",
-    "configuration": {
-      "type": "STREAK"
-    }
-  }
+      {
+          "name": "Patient's login streak",
+          "configuration": {
+              "type": "STREAK"
+          }
+      }
 }
 
 script:post-response {

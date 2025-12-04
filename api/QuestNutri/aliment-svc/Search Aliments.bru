@@ -26,22 +26,23 @@ body:graphql {
         isLastPage
         totalPages
         totalItems
-        data {
+        items {
   				_id
           source
           name
           availablePortions
+          portions
         }
     }
   }
 }
 
 vars:post-response {
-  availableAliments: res("data.aliments.data")
+  availableAliments: res("data.aliments.items")
 }
 
 script:post-response {
-  const aliments = res("data.aliments.data")
+  const aliments = res("data.aliments.items")
   
 }
 

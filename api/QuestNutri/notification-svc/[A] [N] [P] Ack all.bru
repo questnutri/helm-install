@@ -5,13 +5,13 @@ meta {
 }
 
 post {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/notification/ack
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/notification/ack/all
   body: json
   auth: bearer
 }
 
 auth:bearer {
-  token: {{TOKEN}}
+  token: {{PATIENT_ACCESS_TOKEN}}
 }
 
 vars:pre-request {

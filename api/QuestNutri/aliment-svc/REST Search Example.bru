@@ -12,7 +12,7 @@ post {
 
 body:json {
   {
-    "query": "query { aliments( source: null, page: null, items: 5, query: { name: null } ) { currentPage length isFirstPage isLastPage totalPages totalItems data { _id source name } } }"
+    "query": "query { aliments( source: null, page: null, items: 20, query: { name: \"arroz\" } ) { currentPage length isFirstPage isLastPage totalPages totalItems data { _id source name availablePortions portions } } }"
   //     "query": "query { findManyAlimentById(ids:[\"68ec1b03acda5e8f15d5c3e8\"]) { _id source name portions } }"
   
   }
@@ -20,4 +20,5 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
