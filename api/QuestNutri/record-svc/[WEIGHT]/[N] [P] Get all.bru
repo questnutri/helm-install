@@ -5,17 +5,21 @@ meta {
 }
 
 get {
-  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/weight/patient/:patientId/all?limit=1
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/weight/patient/:patientId/all
   body: none
-  auth: inherit
+  auth: bearer
 }
 
 params:query {
-  limit: 1
+  ~limit: 1
 }
 
 params:path {
   patientId: {{PATIENT_ID}}
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
 }
 
 settings {

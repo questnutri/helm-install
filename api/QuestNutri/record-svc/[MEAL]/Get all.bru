@@ -1,0 +1,24 @@
+meta {
+  name: Get all
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/record/meal/patient/:patientId/all
+  body: none
+  auth: bearer
+}
+
+params:path {
+  patientId: {{PATIENT_ID}}
+}
+
+auth:bearer {
+  token: {{PATIENT_ACCESS_TOKEN}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
