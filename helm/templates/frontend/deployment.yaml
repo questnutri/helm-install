@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: "questnutri/frontend-evolved:1.0.0"
+          image: "questnutri/frontend-evolved:1.1.0"
           imagePullPolicy: Always
           ports:
             - containerPort: 80
