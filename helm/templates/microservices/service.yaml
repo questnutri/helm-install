@@ -7,6 +7,9 @@ spec:
   selector:
     app: {{ .name }}-deployment
   type: {{ default "ClusterIP" .serviceType }}
+  {{ - if eq .name "gateway" }}
+  loadBalancerIP: 192.168.0.203
+  {{- end }}
   ports:
     - port: {{ default 3000 .port }}
       protocol: TCP

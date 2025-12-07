@@ -7,14 +7,18 @@ meta {
 post {
   url: {{HTTP_PROTOCOL}}://{{GATEWAY_URL}}/diet/meals
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{NUTRITIONIST_ACCESS_TOKEN}}
 }
 
 body:json {
   {
-    "dietId": "{{createdDiet}}",
+    "dietId": "{{DIET_ID}}",
     "name": "Breakfast",
-    "hour": "09:00",
+    "hour": "10:00",
     "repeatConfiguration": {
       "type": "DAILY"
     }
